@@ -14,9 +14,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 const corsOption = {
-    origin: `http://localhost:5173`,
-    Credentials: true
-}
+  origin: `${process.env.FRONTEND_ORIGIN}`,
+  Credentials: true,
+};
 app.use(cors(corsOption));
 
 // dbConnection
@@ -25,5 +25,5 @@ dbConnection();
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
-    console.log(`Server running on the PORT ${PORT}`);
-})
+  console.log(`Server running on the PORT ${PORT}`);
+});
