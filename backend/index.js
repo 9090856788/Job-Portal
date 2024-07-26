@@ -1,11 +1,15 @@
 import express from "express";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
-import mongoose from "mongoose";
 import cors from "cors";
 import dbConnection from "./database/dbConnection.js";
 
+// Router
+import userRoutes from "./routes/userRoutes.js";
+
 dotenv.config({});
+
+const PORT = process.env.PORT || 3000;
 
 const app = express();
 
@@ -22,8 +26,9 @@ app.use(cors(corsOption));
 // dbConnection
 dbConnection();
 
-const PORT = process.env.PORT || 3000;
+// routes
+app.use("/api/auth/user", userRoutes);
 
 app.listen(PORT, () => {
-  console.log(`Server running on the PORT ${PORT}`);
+  console.log(`Server running on the PORT ${PORT}: )`);
 });
