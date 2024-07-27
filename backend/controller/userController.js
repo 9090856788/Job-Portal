@@ -101,6 +101,62 @@ export const Login = async (req, res) => {
   }
 };
 
+// User Profile Update
+export const UpdateProfile = async (req, res) => {
+  try {
+    const { fullName, email, phoneNumber, bio, skills } = req.body;
+    const file = req.file;
+
+    if (!fullName || !email || !phoneNumber || !bio || !skills) {
+      return res.status(400).json({
+        message: "Some fields are missing",
+        success: false,
+      });
+    }
+
+    // cloudinary configuration section here
+
+    const skillsArray = skills.split(",");
+    const userId = req._id; // req.id is coming from middleware authentication
+    let user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({
+        message: "User not found",
+        success: false,
+      });
+    }
+
+    // updating user data
+    user.fullName = fullName;
+    user.email = email;
+    user.phoneNumber = phoneNumber;
+    user.profile.bio = bio;
+    user.profile.skills = skillsArray;
+
+    // resume section here
+
+    await user.save();
+
+    // returning the user
+    user = {
+      _id: user._id,
+      fullName: user.fullName,
+      email: user.email,
+      phoneNumber: user.phoneNumber,
+      role: user.role,
+      profile: user.profile,
+    };
+
+    return res.status(200).json({
+      message: "User Profile Updated Successfully",
+      success: true,
+      user: user,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 // Logout API
 export const Logout = async (req, res) => {
   try {
