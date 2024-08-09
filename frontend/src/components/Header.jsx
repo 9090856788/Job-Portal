@@ -1,9 +1,28 @@
-import React from "react";
-import { Box, Button, Typography } from "@mui/material";
+import React, { useState } from "react";
+import {
+  Box,
+  Button,
+  Typography,
+  Menu,
+  MenuItem,
+  IconButton,
+  Avatar,
+} from "@mui/material";
 import HomeRepairServiceIcon from "@mui/icons-material/HomeRepairService";
 import SearchIcon from "@mui/icons-material/Search";
 
 const Header = () => {
+  const [isLoggedin, setIsLoggedIn] = useState(true);
+  const [anchorEl, setAnchorEl] = useState(null);
+
+  const handleAvatarClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+    setIsLoggedIn(false);
+  };
   return (
     <Box
       sx={{
@@ -38,7 +57,10 @@ const Header = () => {
           }}
         >
           <HomeRepairServiceIcon />
-          <Typography variant="h6" sx={{ fontWeight: 600, fontSize: { xs: "1.2rem", sm: "1.5rem" } }}>
+          <Typography
+            variant="h6"
+            sx={{ fontWeight: 600, fontSize: { xs: "1.2rem", sm: "1.5rem" } }}
+          >
             JobHunt
           </Typography>
           <Box
@@ -78,16 +100,6 @@ const Header = () => {
           }}
         >
           <Button
-            variant="outlined"
-            sx={{
-              width: { xs: "80%", sm: "100px" }, // Responsive width
-              height: "40px",
-              fontSize: { xs: "0.8rem", sm: "0.9rem" }, // Responsive font size
-            }}
-          >
-            Login
-          </Button>
-          <Button
             variant="contained"
             sx={{
               width: { xs: "80%", sm: "140px" }, // Responsive width
@@ -97,6 +109,33 @@ const Header = () => {
           >
             Post Job
           </Button>
+          {isLoggedin ? (
+            <Button
+              variant="outlined"
+              sx={{
+                width: { xs: "80%", sm: "100px" }, // Responsive width
+                height: "40px",
+                fontSize: { xs: "0.8rem", sm: "0.9rem" }, // Responsive font size
+              }}
+            >
+              Login
+            </Button>
+          ) : (
+            <Box>
+              <IconButton onClick={handleAvatarClick} color="inherit">
+                <Avatar alt="User Avatar" />
+              </IconButton>
+              <Menu
+                anchorEl={anchorEl}
+                open={Boolean(anchorEl)}
+                onClose={handleClose}
+              >
+                <MenuItem onClick={handleClose}>Profile</MenuItem>
+                <MenuItem onClick={handleClose}>Account</MenuItem>
+                <MenuItem onClick={handleClose}>Logout</MenuItem>
+              </Menu>
+            </Box>
+          )}
         </Box>
       </Box>
     </Box>
