@@ -11,64 +11,84 @@ const Navbar = () => {
   };
 
   return (
-    <>
+    <Box
+      sx={{
+        width: "100%",
+        height: { xs: "10vh", sm: "8vh", md: "5vh" }, // Responsive height
+        bgcolor: "#d9dedb",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        paddingX: 2,
+      }}
+    >
       <Box
         sx={{
+          display: "flex",
+          justifyContent: { xs: "center", md: "space-between" },
           width: "100%",
-          height: "5vh",
-          bgcolor: "#d9dedb",
+          maxWidth: "1200px",
         }}
       >
         <Box
           sx={{
             display: "flex",
-            justifyContent: "space-around",
-            padding: 1,
+            alignItems: "center",
+            gap: { xs: 1, sm: 2 },
+            flexWrap: "wrap",
           }}
         >
-          <Box sx={{ display: "flex", alignContent: "center", gap: 2 }}>
-            <Link to="/" style={{ textDecoration: "none" }}>
-              <Typography>Home</Typography>
-            </Link>
-            <Link to="/about" style={{ textDecoration: "none" }}>
-              <Typography>About</Typography>
-            </Link>
-            <Link to="/job/search" style={{ textDecoration: "none" }}>
-              <Typography>Find Job</Typography>
-            </Link>
-            <Link to="/recruiter" style={{ textDecoration: "none" }}>
-              <Typography>Recruiter</Typography>
-            </Link>
-            <Link to="/jobseeker" style={{ textDecoration: "none" }}>
-              <Typography>JobSeeker</Typography>
-            </Link>
-          </Box>
+          <Link to="/" style={{ textDecoration: "none" }}>
+            <Typography variant="body1">Home</Typography>
+          </Link>
+          <Link to="/about" style={{ textDecoration: "none" }}>
+            <Typography variant="body1">About</Typography>
+          </Link>
+          <Link to="/job/search" style={{ textDecoration: "none" }}>
+            <Typography variant="body1">Find Job</Typography>
+          </Link>
+          <Link to="/recruiter" style={{ textDecoration: "none" }}>
+            <Typography variant="body1">Recruiter</Typography>
+          </Link>
+          <Link to="/jobseeker" style={{ textDecoration: "none" }}>
+            <Typography variant="body1">JobSeeker</Typography>
+          </Link>
+        </Box>
 
-          <Box sx={{ display: "flex", alignItems: "center" }}>
-            <CallIcon />
-            <Typography sx={{ marginLeft: 1 }}>9090856788</Typography>
-            <select
-              value={language}
-              onChange={handleLanguageChange}
-              style={{
-                marginLeft: 15,
-                border: "none",
-                outline: "none",
-                backgroundColor: "transparent",
-                fontSize: "inherit",
-                color: "inherit",
-              }}
-            >
-              <option value="English">English</option>
-              <option value="Hindi">Hindi</option>
-              <option value="Odia">Odia</option>
-              <option value="Bengali">Bengali</option>
-              <option value="Kannada">Kannada</option>
-            </select>
-          </Box>
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            gap: 1,
+            flexWrap: "wrap",
+          }}
+        >
+          <CallIcon />
+          <Typography sx={{ display: { xs: "none", sm: "block" } }}>
+            9090856788
+          </Typography>
+          <select
+            value={language}
+            onChange={handleLanguageChange}
+            style={{
+              marginLeft: 15,
+              border: "none",
+              outline: "none",
+              backgroundColor: "transparent",
+              fontSize: "inherit",
+              color: "inherit",
+              fontSize: { xs: "0.8rem", sm: "1rem" }, // Responsive font size
+            }}
+          >
+            <option value="English">English</option>
+            <option value="Hindi">Hindi</option>
+            <option value="Odia">Odia</option>
+            <option value="Bengali">Bengali</option>
+            <option value="Kannada">Kannada</option>
+          </select>
         </Box>
       </Box>
-    </>
+    </Box>
   );
 };
 
