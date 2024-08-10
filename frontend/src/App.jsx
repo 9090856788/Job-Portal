@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 import Home from "./Layout/Home";
 import About from "./pages/About";
 import JobSearch from "./pages/JobSearch";
@@ -21,6 +22,7 @@ const App = () => {
         <Route path="/recruiter" element={<Recruiter />} />
         <Route path="/jobseeker" element={<JobSeeker />} />
       </Routes>
+      <Footer/>
     </Router>
   );
 };
