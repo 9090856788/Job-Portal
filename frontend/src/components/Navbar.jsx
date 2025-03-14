@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import { Box, Typography } from "@mui/material";
 import CallIcon from "@mui/icons-material/Call";
@@ -75,7 +76,6 @@ const Navbar = () => {
               border: "none",
               outline: "none",
               backgroundColor: "transparent",
-              fontSize: "inherit",
               color: "inherit",
               fontSize: { xs: "0.8rem", sm: "1rem" }, // Responsive font size
             }}
