@@ -126,9 +126,9 @@ const Header = () => {
               variant="outlined"
               onClick={() => setIsLoggedIn(true)}
               sx={{
-                width: { xs: "90%", sm: "100px" },
-                height: "40px",
-                fontSize: { xs: "0.9rem", sm: "1rem" },
+                width: { xs: "100px", sm: "140px" }, // Smaller on mobile
+                height: { xs: "35px", sm: "40px" }, // Smaller on mobile
+                fontSize: { xs: "0.8rem", sm: "1rem" }, // Adjust font size
               }}
             >
               Login
