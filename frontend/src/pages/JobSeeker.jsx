@@ -1,9 +1,8 @@
-import React from 'react'
+/* eslint-disable no-unused-vars */
+import React from "react";
 
 const JobSeeker = () => {
-  return (
-    <div>JobSeeker</div>
-  )
-}
+  return <div>JobSeeker</div>;
+};
 
-export default JobSeeker
+export default JobSeeker;

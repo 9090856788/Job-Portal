@@ -1,9 +1,8 @@
-import React from 'react'
+/* eslint-disable no-unused-vars */
+import React from "react";
 
 const Recruiter = () => {
-  return (
-    <div>Recruiter</div>
-  )
-}
+  return <div>Recruiter</div>;
+};
 
-export default Recruiter
+export default Recruiter;

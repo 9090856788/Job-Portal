@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import {
   Box,
@@ -12,7 +13,7 @@ import HomeRepairServiceIcon from "@mui/icons-material/HomeRepairService";
 import SearchIcon from "@mui/icons-material/Search";
 
 const Header = () => {
-  const [isLoggedin, setIsLoggedIn] = useState(true);
+  const [isLoggedin, setIsLoggedIn] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
 
   const handleAvatarClick = (event) => {
@@ -21,31 +22,37 @@ const Header = () => {
 
   const handleClose = () => {
     setAnchorEl(null);
-    setIsLoggedIn(false);
   };
+
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+    handleClose();
+  };
+
   return (
     <Box
       sx={{
         width: "100%",
-        height: { xs: "12vh", sm: "10vh", md: "8vh", lg: "8vh" }, // Responsive height
+        minHeight: { xs: "10vh", sm: "9vh", md: "8vh" },
         bgcolor: "#f0f2f5",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        paddingX: { xs: 1, sm: 2, md: 3 }, // Responsive padding
+        px: { xs: 2, sm: 3, md: 4 },
       }}
     >
       <Box
         sx={{
           display: "flex",
-          flexDirection: { xs: "column", sm: "row" }, // Stack vertically on small screens, row on larger screens
-          justifyContent: { xs: "center", md: "space-between" },
+          flexDirection: { xs: "column", sm: "row" },
+          justifyContent: "space-between",
           alignItems: "center",
           width: "100%",
           maxWidth: "1200px",
-          gap: { xs: 2, sm: 3 }, // Responsive gap
+          gap: { xs: 2, sm: 3 },
         }}
       >
+        {/* Logo & Search Box */}
         <Box
           sx={{
             display: "flex",
@@ -56,7 +63,7 @@ const Header = () => {
             justifyContent: { xs: "center", sm: "flex-start" },
           }}
         >
-          <HomeRepairServiceIcon />
+          <HomeRepairServiceIcon fontSize="large" />
           <Typography
             variant="h6"
             sx={{ fontWeight: 600, fontSize: { xs: "1.2rem", sm: "1.5rem" } }}
@@ -69,13 +76,13 @@ const Header = () => {
               alignItems: "center",
               border: "1px solid #ccc",
               borderRadius: "4px",
-              padding: "0 8px",
-              backgroundColor: "#fff",
-              width: { xs: "100%", sm: "300px", md: "400px" }, // Responsive width
+              px: 1,
+              bgcolor: "#fff",
+              width: { xs: "100%", sm: "300px", md: "400px" },
               maxWidth: "100%",
             }}
           >
-            <SearchIcon sx={{ color: "#aaa", marginRight: 1 }} />
+            <SearchIcon sx={{ color: "#aaa", mr: 1 }} />
             <input
               type="text"
               placeholder="Search..."
@@ -86,36 +93,42 @@ const Header = () => {
                 width: "100%",
                 height: "40px",
                 boxSizing: "border-box",
+                fontSize: "1rem",
               }}
             />
           </Box>
         </Box>
+
+        {/* Buttons & User Profile */}
         <Box
           sx={{
             display: "flex",
-            flexDirection: { xs: "column", sm: "row" }, // Stack buttons vertically on small screens, row on larger screens
-            gap: { xs: 1, sm: 2 },
+            flexDirection: { xs: "column", sm: "row" },
             alignItems: "center",
             justifyContent: { xs: "center", sm: "flex-end" },
+            gap: { xs: 1.5, sm: 2 },
+            width: { xs: "100%", sm: "auto" },
           }}
         >
           <Button
             variant="contained"
             sx={{
-              width: { xs: "80%", sm: "140px" }, // Responsive width
-              height: "40px",
-              fontSize: { xs: "0.8rem", sm: "0.9rem" }, // Responsive font size
+              width: { xs: "100px", sm: "140px" }, // Smaller on mobile
+              height: { xs: "35px", sm: "40px" }, // Smaller on mobile
+              fontSize: { xs: "0.8rem", sm: "1rem" }, // Adjust font size
             }}
           >
             Post Job
           </Button>
-          {isLoggedin ? (
+
+          {!isLoggedin ? (
             <Button
               variant="outlined"
+              onClick={() => setIsLoggedIn(true)}
               sx={{
-                width: { xs: "80%", sm: "100px" }, // Responsive width
+                width: { xs: "90%", sm: "100px" },
                 height: "40px",
-                fontSize: { xs: "0.8rem", sm: "0.9rem" }, // Responsive font size
+                fontSize: { xs: "0.9rem", sm: "1rem" },
               }}
             >
               Login
@@ -129,10 +142,13 @@ const Header = () => {
                 anchorEl={anchorEl}
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
+                sx={{
+                  mt: 1,
+                }}
               >
                 <MenuItem onClick={handleClose}>Profile</MenuItem>
                 <MenuItem onClick={handleClose}>Account</MenuItem>
-                <MenuItem onClick={handleClose}>Logout</MenuItem>
+                <MenuItem onClick={handleLogout}>Logout</MenuItem>
               </Menu>
             </Box>
           )}

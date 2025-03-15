@@ -1,11 +1,8 @@
-import React from 'react'
+/* eslint-disable no-unused-vars */
+import React from "react";
 
 const Home = () => {
-  return (
-    <>
-      Home
-    </>
-  )
-}
+  return <>Home</>;
+};
 
-export default Home
+export default Home;

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
@@ -22,7 +23,7 @@ const App = () => {
         <Route path="/recruiter" element={<Recruiter />} />
         <Route path="/jobseeker" element={<JobSeeker />} />
       </Routes>
-      <Footer/>
+      <Footer />
     </Router>
   );
 };
