@@ -11,6 +11,8 @@ import {
 } from "@mui/material";
 import HomeRepairServiceIcon from "@mui/icons-material/HomeRepairService";
 import SearchIcon from "@mui/icons-material/Search";
+import { Link } from "react-router-dom";
+import CountryDropdown from "./getCountriesDropdown";
 
 const Header = () => {
   const [isLoggedin, setIsLoggedIn] = useState(false);
@@ -53,51 +55,58 @@ const Header = () => {
         }}
       >
         {/* Logo & Search Box */}
-        <Box
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            gap: { xs: 1, sm: 2 },
-            flexWrap: "wrap",
-            width: "100%",
-            justifyContent: { xs: "center", sm: "flex-start" },
-          }}
-        >
-          <HomeRepairServiceIcon fontSize="large" />
-          <Typography
-            variant="h6"
-            sx={{ fontWeight: 600, fontSize: { xs: "1.2rem", sm: "1.5rem" } }}
-          >
-            JobHunt
-          </Typography>
+        <Link to="/" style={{ textDecoration: "none" }}>
           <Box
             sx={{
               display: "flex",
               alignItems: "center",
-              border: "1px solid #ccc",
-              borderRadius: "4px",
-              px: 1,
-              bgcolor: "#fff",
-              width: { xs: "100%", sm: "300px", md: "400px" },
-              maxWidth: "100%",
+              gap: { xs: 1, sm: 2 },
+              flexWrap: "wrap",
+              width: "100%",
+              justifyContent: { xs: "center", sm: "flex-start" },
+              cursor: "pointer",
             }}
           >
-            <SearchIcon sx={{ color: "#aaa", mr: 1 }} />
-            <input
-              type="text"
-              placeholder="Search..."
-              style={{
-                border: "none",
-                outline: "none",
-                padding: "4px",
-                width: "100%",
-                height: "40px",
-                boxSizing: "border-box",
-                fontSize: "1rem",
+            <HomeRepairServiceIcon fontSize="large" />
+            <Typography
+              variant="h6"
+              sx={{
+                fontWeight: 600,
+                fontSize: { xs: "1.2rem", sm: "1.5rem", cursor: "pointer" },
               }}
-            />
+            >
+              JobHunt
+            </Typography>
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                border: "1px solid #ccc",
+                borderRadius: "4px",
+                px: 1,
+                bgcolor: "#fff",
+                width: { xs: "100%", sm: "300px", md: "500px" },
+                maxWidth: "100%",
+              }}
+            >
+              <CountryDropdown />
+              <SearchIcon sx={{ color: "#4d79ff", mr: 1 }} />
+              <input
+                type="text"
+                placeholder="Job title, keyword, company, location"
+                style={{
+                  border: "none",
+                  outline: "none",
+                  padding: "4px",
+                  width: "100%",
+                  height: "40px",
+                  boxSizing: "border-box",
+                  fontSize: "1rem",
+                }}
+              />
+            </Box>
           </Box>
-        </Box>
+        </Link>
 
         {/* Buttons & User Profile */}
         <Box
@@ -116,9 +125,10 @@ const Header = () => {
               width: { xs: "100px", sm: "140px" }, // Smaller on mobile
               height: { xs: "35px", sm: "40px" }, // Smaller on mobile
               fontSize: { xs: "0.8rem", sm: "1rem" }, // Adjust font size
+              textTransform: "none",
             }}
           >
-            Post Job
+            Post A Jobs
           </Button>
 
           {!isLoggedin ? (
@@ -129,9 +139,10 @@ const Header = () => {
                 width: { xs: "100px", sm: "140px" }, // Smaller on mobile
                 height: { xs: "35px", sm: "40px" }, // Smaller on mobile
                 fontSize: { xs: "0.8rem", sm: "1rem" }, // Adjust font size
+                textTransform: "none",
               }}
             >
-              Login
+              Sign In
             </Button>
           ) : (
             <Box>

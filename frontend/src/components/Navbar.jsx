@@ -80,6 +80,10 @@ const Navbar = () => {
                       fontWeight:
                         location.pathname === item.path ? "bold" : "normal",
                       "&:hover": { color: "blue" },
+                      borderBottom:
+                        location.pathname === item.path
+                          ? "1px solid blue"
+                          : "none",
                     }}
                   >
                     {item.name}
@@ -88,7 +92,7 @@ const Navbar = () => {
               </Menu>
             </>
           ) : (
-            <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+            <Box sx={{ display: "flex", alignItems: "center", gap: 3 }}>
               {navItems.map((item) => (
                 <Link
                   key={item.path}
@@ -104,6 +108,11 @@ const Navbar = () => {
                         location.pathname === item.path ? "bold" : "normal",
                       transition: "color 0.3s ease-in-out",
                       "&:hover": { color: "blue" },
+                      borderBottom:
+                        location.pathname === item.path
+                          ? "1px solid blue"
+                          : "none",
+                      paddingBottom: "5px",
                     }}
                   >
                     {item.name}
