@@ -10,9 +10,8 @@ import {
   Avatar,
 } from "@mui/material";
 import HomeRepairServiceIcon from "@mui/icons-material/HomeRepairService";
-import SearchIcon from "@mui/icons-material/Search";
 import { Link } from "react-router-dom";
-import CountryDropdown from "./getCountriesDropdown";
+import SearchBar from "./SearchBar";
 
 const Header = () => {
   const [isLoggedin, setIsLoggedIn] = useState(false);
@@ -35,8 +34,8 @@ const Header = () => {
     <Box
       sx={{
         width: "100%",
-        minHeight: { xs: "10vh", sm: "9vh", md: "8vh" },
-        bgcolor: "#f0f2f5",
+        minHeight: { xs: "10vh", sm: "9vh", md: "10vh" },
+        bgcolor: "#fff",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
@@ -77,34 +76,7 @@ const Header = () => {
             >
               JobHunt
             </Typography>
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                border: "1px solid #ccc",
-                borderRadius: "4px",
-                px: 1,
-                bgcolor: "#fff",
-                width: { xs: "100%", sm: "300px", md: "500px" },
-                maxWidth: "100%",
-              }}
-            >
-              <CountryDropdown />
-              <SearchIcon sx={{ color: "#4d79ff", mr: 1 }} />
-              <input
-                type="text"
-                placeholder="Job title, keyword, company, location"
-                style={{
-                  border: "none",
-                  outline: "none",
-                  padding: "4px",
-                  width: "100%",
-                  height: "40px",
-                  boxSizing: "border-box",
-                  fontSize: "1rem",
-                }}
-              />
-            </Box>
+            <SearchBar />
           </Box>
         </Link>
 
